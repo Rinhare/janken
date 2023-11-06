@@ -13,25 +13,91 @@
 </html>
 
 <script>
-    let userQuess = prompt("Rock paper or scissors").toLowerCase();
     
-    let computerQuess = computerAnswer();
-    
-    function computerAnswer() {
-        answer = Math.floor(Math.random()*3) + 1;
-    
-        if (answer == 1)
-        {return "rock"}
-        else if (answer == 2)
-        {return "paper"}
-        else if (answer == 3)
-        {return "scissors"}
+    function game() {
+        let player1wins = 0;
+        let player2wins = 0;
+        let winner;
+        let round = 0;
+        while(round <= 5)
+        {
+            
+            if (player1wins === 3)
+            {
+                winner = "Player won the game"
+                break
+            }
+            else if (player2wins === 3)
+            {
+                winner = "Computer won the game"
+                break
+            }
+            
+        let computerQuess = computerAnswer();
+        let userQuess = prompt("Rock paper or scissors").toLowerCase();
+            
+                
+                    if (userQuess == computerQuess)
+                    {
+                        console.log("Player used " + userQuess + " and computer used " + computerQuess+ "\n its a tie");     
+                    }
+                    else if (userQuess == "rock" && computerQuess == "scissors")
+                    {
+                        console.log("Player used " + userQuess + " and computer used " + computerQuess+ "\n player wins");
+                        player1wins++
+                        round++
+                    }
+                    else if (userQuess == "paper" && computerQuess == "rock")
+                    {
+                        console.log("Player used " + userQuess + " and computer used " + computerQuess+ "\n player wins");
+                        player1wins++
+                        round++
+                    }
+                    else if (userQuess == "scissors" && computerQuess == "paper")
+                    {
+                        console.log("Player used " + userQuess + " and computer used " + computerQuess+ "\n player wins");
+                        player1wins++
+                        round++
+                    }
+                    else if (userQuess == "rock" && computerQuess == "paper")
+                    {
+                        console.log("Player used " + userQuess + " and computer used " + computerQuess+ "\n computer wins"); 
+                        player2wins++
+                        round++
+                    }    
+                    else if (userQuess == "scissors" && computerQuess == "rock")
+                    {
+                        console.log("Player used " + userQuess + " and computer used " + computerQuess+ "\n computer wins"); 
+                        player2wins++
+                        round++
+                    }
+                    else if (userQuess == "paper" && computerQuess == "scissors")
+                    {
+                        console.log("Player used " + userQuess + " and computer used " + computerQuess+ "\n computer wins"); 
+                        player2wins++
+                        round++
+                    }
+
+         }
+        
+            return winner;
     }
-    
-    function game(quess1, quess2) {
-        console.log(quess1, quess2);
-    }
-    
-    game(userQuess, computerQuess);
-    
+
+        
+        
+        console.log(game());
+
+
+        function computerAnswer() {
+            answer = Math.floor(Math.random()*3) + 1;
+            
+            if (answer == 1)
+            {return "rock"}
+            else if (answer == 2)
+            {return "paper"}
+            else if (answer == 3)
+            {return "scissors"}
+        }
+        
+        
     </script>

@@ -11,89 +11,117 @@
     <button id="rock">Rock</button>
     <button id="paper">Paper</button>
     <button id="scissors">Scissors</button>
+
+    <div>
+
+    </div>
 </body>
 
 </html>
 
-<script>
+<script defer>
     
+    let userQuess = "";
     const rock = document.querySelector("#rock");
     const paper = document.querySelector("#paper");
     const scissors = document.querySelector("#scissors");
-    let userQuess = "";
+
+    const container = document.querySelector("div");
+    const contentText = document.createElement('p');
     
     rock.addEventListener('click', () => {
         userQuess = "rock";
-        game();
+        contentText.textContent = game();
+        container.appendChild(contentText);
     })
-
+    
     paper.addEventListener('click', () => {
         userQuess = "paper";
-        game();
+        contentText.textContent = game();
+        container.appendChild(contentText)
     })
 
     scissors.addEventListener('click', () => {
         userQuess = "scissors"; 
-        game();
+        contentText.textContent = game();
+        container.appendChild(contentText)
     })
+    
+
+    let player1wins = 0;
+    let player2wins = 0;
 
     function game() {
-        let player1wins = 0;
-        let player2wins = 0;
         let winner;
         let round = 0;
+        let result = "";
         let computerQuess = computerAnswer();
             
+
                 
                     if (userQuess == computerQuess)
                     {
-                        console.log("Player used " + userQuess + " and computer used " + computerQuess+ "\n its a tie");     
+                        console.log("Player used " + userQuess + " and computer used " + computerQuess+ "\n its a tie");
+                        result = "Player used " + userQuess + " and computer used " + computerQuess+ "\n its a tie";    
                     }
                     else if (userQuess == "rock" && computerQuess == "scissors")
                     {
                         console.log("Player used " + userQuess + " and computer used " + computerQuess+ "\n player wins");
                         player1wins++
                         round++
+                        result = "Player used " + userQuess + " and computer used " + computerQuess+ "\n player wins"
                     }
                     else if (userQuess == "paper" && computerQuess == "rock")
                     {
                         console.log("Player used " + userQuess + " and computer used " + computerQuess+ "\n player wins");
                         player1wins++
                         round++
+                        result = "Player used " + userQuess + " and computer used " + computerQuess+ "\n player wins";
                     }
                     else if (userQuess == "scissors" && computerQuess == "paper")
                     {
                         console.log("Player used " + userQuess + " and computer used " + computerQuess+ "\n player wins");
                         player1wins++
                         round++
+                        result = "Player used " + userQuess + " and computer used " + computerQuess+ "\n player wins";
                     }
                     else if (userQuess == "rock" && computerQuess == "paper")
                     {
                         console.log("Player used " + userQuess + " and computer used " + computerQuess+ "\n computer wins"); 
                         player2wins++
                         round++
+                        result = "Player used " + userQuess + " and computer used " + computerQuess+ "\n computer wins";
                     }    
                     else if (userQuess == "scissors" && computerQuess == "rock")
                     {
                         console.log("Player used " + userQuess + " and computer used " + computerQuess+ "\n computer wins"); 
                         player2wins++
                         round++
+                        result = "Player used " + userQuess + " and computer used " + computerQuess+ "\n computer wins";
                     }
                     else if (userQuess == "paper" && computerQuess == "scissors")
                     {
                         console.log("Player used " + userQuess + " and computer used " + computerQuess+ "\n computer wins"); 
                         player2wins++
                         round++
+                        result = "Player used " + userQuess + " and computer used " + computerQuess+ "\n computer wins";
+                    }
+                    
+
+                    if(player1wins >= 5) {
+                        alert("Player wins the game");
+                    }
+                    else if (player2wins >= 5) {
+                        alert("Computer wins the game");
                     }
 
-                    
+
+            return result + "\n  Game score: Player: \n" + player1wins + " Computer " + player2wins;            
+
          }
         
         
 
-        
-        
-        console.log(game());
 
 
         function computerAnswer() {
